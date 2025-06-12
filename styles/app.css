@@ -1,6 +1,56 @@
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
+#main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 8rem;
+}
 
+.task-input-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--white);
+  padding: 1.7rem 2rem;
+  border-radius: 6px;
+  width: 80%;
+  gap: 1rem;
+}
 
+.todo-name {
+  flex: 1;
+  border-color: transparent;
+  outline: none;
+  font-size: 1rem;
+}
+
+.hidden-date-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.calendar-icon {
+  width: 24px;
+  height: 24px;
+  fill: #4DA8DA;
+  cursor: pointer;
+}
+
+.add-button {
+  background-color: var(--green);
+  border: none;
+  color: var(--text1);
+  font-size: 1rem;
+  height: 2rem;
+  width: 4rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
