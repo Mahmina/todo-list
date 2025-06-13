@@ -7,8 +7,10 @@
 :root {
   --background: #DBEDF3;
   --secondryBackground: #283149;
+  --linkColor: #3674B5;
   --navy: #404B69;
   --green: #00818A;
+  --blue: #4DA8DA;
   --white: #ffffff;
   --text1: white;
   --text2: rgba(245, 245, 245, 0.808);
@@ -17,6 +19,7 @@
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Inter', sans-serif;
 }
 
 .flex-container {

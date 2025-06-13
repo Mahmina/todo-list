@@ -21,6 +21,7 @@ main {
   border-radius: 6px;
   width: 80%;
   gap: 1rem;
+  margin-bottom: 2.7rem;
 }
 
 .todo-name {
@@ -40,7 +41,7 @@ main {
 .calendar-icon {
   width: 24px;
   height: 24px;
-  fill: #4DA8DA;
+  fill: var(--blue);
   cursor: pointer;
 }
 
@@ -54,3 +55,39 @@ main {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.navigation {
+  width: 80%;
+}
+
+.nav-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 6px;
+  gap: 1rem;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav-item {
+  color: var(--navy);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--linkColor);
+}
+
+.nav-link.active {
+  padding: 0.5rem 1.5rem;
+  border-bottom: 2px solid var(--linkColor);
+  font-weight: bold;
+  color: var(--linkColor);
+}
+
