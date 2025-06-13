@@ -6,12 +6,15 @@
 
 :root {
   --background: #DBEDF3;
+  --background-dark: #C5DDE4;
   --secondryBackground: #283149;
   --linkColor: #3674B5;
   --navy: #404B69;
   --green: #00818A;
   --blue: #4DA8DA;
   --white: #ffffff;
+  --red: #D21312;
+  --purple: #6D67E4;
   --text1: white;
   --text2: rgba(245, 245, 245, 0.808);
 }
