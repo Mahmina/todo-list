@@ -175,3 +175,59 @@ main {
 button svg {
   transform: scale(1.2);
 }
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: var(--background-dark);
+  box-shadow: 1px 1px 10px var(--navy);
+  margin-left: 4rem;
+  margin-right: 1rem;
+}
+
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1.2rem;
+}
+
+.motivation-text {
+  color: var(--navy);
+}
+
+#progress-bar {
+  background-color: var(--background);
+  height: 1rem;
+  width: 85%;
+  border-radius: 10px;
+}
+
+#progress {
+  background-color: var(--purple);
+  height: 1rem;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.stats-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  background-color: var(--purple);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px var(--navy);
+}
+
+.numbers {
+  color: var(--background);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
