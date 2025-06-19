@@ -12,3 +12,13 @@
   height: 8rem;
   box-shadow: 1px 1px 20px var(--secondryBackground);
 }
+
+@media (max-width: 768px) {
+  .header {
+    height: 5rem;
+  }
+
+  .todo-banner {
+    height: 5rem;
+  }
+}
