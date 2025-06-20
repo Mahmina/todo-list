@@ -1,4 +1,6 @@
-const todoList = [];
+const todoList = JSON.parse(localStorage.getItem('todoList')) ||[];
+
+renderTodoList();
 
 document.querySelector('.js-add-button')
   .addEventListener('click', () => {
@@ -19,17 +21,22 @@ function addTodo() {
   dateInputElement.value = '';
 
   renderTodoList();
+
+  localStorage.setItem('todoList', JSON.stringify(todoList));
 } 
+
 
 function renderTodoList() {
   let todoListHTML = '';
 
-  todoList.forEach((todo) => {
+  todoList.forEach((todoObject) => {
+    const { name, dueDate } = todoObject;
+
     const html = `
       <li class="todo-list-item">
         <div class="todo-info">
           <input type="checkbox" class="todo-checkbox">
-          <p class="todo-name">${todo.name}</p>
+          <p class="todo-name">${name}</p>
         </div>
         <div class="todo-controls">
           <div class="todo-buttons">
@@ -46,13 +53,14 @@ function renderTodoList() {
             </button>
           </div>
           <p class="todo-date">
-            ${dayjs(todo.dueDate).format('MM MMMM YYYY')}
+            ${dayjs(dueDate).format('MM MMMM YYYY')}
           </p>
         </div>
       </li>`
 
       todoListHTML += html;
   });
+
   document.querySelector('.js-todo-list')
     .innerHTML = todoListHTML;
 }
