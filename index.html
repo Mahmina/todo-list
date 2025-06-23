@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/modal.css">
 </head>
 <body>
   <div class="flex-container">
@@ -65,9 +66,35 @@
         </div>
       </section>
     </main>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>  
+    <!-- Modal content -->
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edit Todo</h2>
+          <span class="close-modal">&#10006;</span>
+        </div>
+        <div class="modal-body">
+          <div class="modal-inputs">
+            <label>
+              Todo Name:
+            </label>  
+            <input type="text" class="edit-name-input js-edit-name-input">
+            <label>
+              Due Date:
+            </label>
+            <input type="date" class="edit-date-input js-edit-date-input">
+          </div>
+          <div class="modal-buttons">
+            <button class="save-edit-button js-save-edit-button">Update</button>
+            <button class="cancel-edit-button js-cancel-edit-button">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
+ 
   <script type="module" src="script/todo-list.js"></script>
+  <script type="module" src="script/components/editModal.js"></script>
 </body>
 </html>
