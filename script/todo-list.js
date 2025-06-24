@@ -1,9 +1,8 @@
-import dayjs from 'https://cdn.jsdelivr.net/npm/dayjs@1.11.13/+esm';
+import { todoList } from "./data/todos.js";
 import { capitalizeFirstLetter } from "./utils/stringUtils.js";
-import { bindEditButtons } from './components/editModal.js';
-
-const todoList = JSON.parse(localStorage.getItem('todoList')) 
-  || [];
+// import { bindEditButtons } from './components/editModal.js';
+import { formatDate } from './utils/formatDate.js';
+import { generateId } from "./data/todos.js";
 
 renderTodoList();
 
@@ -12,25 +11,36 @@ document.querySelector('.js-add-button')
     addTodo();
   });
 
-function renderTodoList() {
+function addTodo() {
+  const inputElement = document.querySelector('.js-todo-name-input');
+  const name = capitalizeFirstLetter(inputElement.value);
+
+  const dateInputElement = document.getElementById('todo-date-input');
+  const dueDate = dateInputElement.value;
+  
+  const newTodo = {
+    id: generateId(),
+    name: name,
+    dueDate: dueDate,
+    completed: false
+  };
+ 
+  todoList.push(newTodo);
+
+  inputElement.value = '';
+  dateInputElement.value = '';
+
+  renderTodoList();
+  saveToStorage();
+}  
+
+export function renderTodoList() {
   let todoListHTML = '';
 
   todoList.forEach((todoObject) => {
-    const { name, dueDate } = todoObject;
+    const { id, name, dueDate } = todoObject;
 
-    let formattedDate = 'No date';
-    if (dueDate) {
-      try {
-        // Parse the date and format it
-        const date = dayjs(dueDate);
-        if (date.isValid()) {
-          formattedDate = date.format('DD MMM YYYY');
-        }
-      } catch (error) {
-        console.error('Error formatting date:', error);
-        formattedDate = 'Invalid date';
-      }
-    }
+    const formattedDate = formatDate(dueDate);
  
     const html = `
       <li class="todo-list-item">
@@ -40,7 +50,8 @@ function renderTodoList() {
         </div>
         <div class="todo-controls">
           <div class="todo-buttons">
-            <button class="edit-button js-edit-button" data-todo-name=${name} data-todo-date=${dueDate}>
+            <button class="edit-button js-edit-button" 
+            data-todo-id=${id}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
@@ -65,25 +76,8 @@ function renderTodoList() {
     .innerHTML = todoListHTML;
 
   removeTodo();  
-  bindEditButtons();
+  // bindEditButtons();
 }
-
-function addTodo() {
-  const inputElement = document.querySelector('.js-todo-name-input');
-  const name = capitalizeFirstLetter(inputElement.value);
-
-  const dateInputElement = document.getElementById('todo-date-input');
-  const dueDate = dateInputElement.value;
-  
-  const todoObject = {name, dueDate}
-  todoList.push(todoObject);
-
-  inputElement.value = '';
-  dateInputElement.value = '';
-
-  renderTodoList();
-  saveToStorage();
-} 
 
 export function saveToStorage() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
@@ -97,5 +91,5 @@ function removeTodo() {
         renderTodoList();
         saveToStorage();
       });
-    });
+    });    
 }

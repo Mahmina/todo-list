@@ -65,7 +65,7 @@
   border-radius: 4px;
 }
 
-.save-edit-button {
+.update-button {
   padding: 0.8rem 1.5rem;
   background-color: var(--navy);
   border: 1px solid var(--navy);
@@ -76,7 +76,7 @@
   transition: background-color 0.5s, border-color 0.5s, color 0.5s;
 }
 
-.save-edit-button:hover {
+.update-button:hover {
   background-color: var(--navy2);
   border-color: var(--navy2);
 }

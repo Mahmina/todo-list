@@ -1,30 +1,60 @@
-import { saveToStorage } from '../todo-list.js';
+import { todoList } from "../data/todos.js";
+import { saveToStorage } from "../todo-list.js";
+import { renderTodoList } from "../todo-list.js";
 
-const modal = document.getElementById('myModal');
+attachEditButtonListeners();
 closeEditModal();
 
-export function bindEditButtons() {
+// Get modal element
+const modal = document.getElementById('myModal');
+
+// Update Todos
+document.querySelector('.js-update-button')
+  .addEventListener('click', () => {
+    const todoId = modal.dataset.editingId;
+    const matchingTodo = todoList.find(todo => todo.id === todoId);
+    if (!matchingTodo) return;
+
+    matchingTodo.name = document.querySelector('.js-edit-name-input').value;
+    matchingTodo.dueDate = document.querySelector('.js-edit-date-input').value;
+
+    saveToStorage();
+    renderTodoList();
+    modal.style.display = "none";
+
+    attachEditButtonListeners();
+  });
+
+function attachEditButtonListeners() {
   document.querySelectorAll('.js-edit-button')
     .forEach((editButton) => {
       editButton.addEventListener('click', () => {
         modal.style.display = "block";
+        const todoId = editButton.dataset.todoId;
+        
+        let matchingTodo;
 
-        populateEditModal(editButton);
+        todoList.forEach((todoItem) => {
+          if (todoItem.id === todoId) {
+            matchingTodo = todoItem;
+          }
+        });
+        populateEditModal(matchingTodo);
+
+        modal.dataset.editingId = todoId;
       });
-    });
+    });   
 }
 
+// Populate the modal inputs with the todo's info
+function populateEditModal(matchingTodo) {
+  if (!matchingTodo) return;
 
-function populateEditModal(editButton) {
-  const todoName = editButton.dataset.todoName;
-  const todoDate = editButton.dataset.todoDate;
-  document.querySelector('.js-edit-name-input')
-    .value = todoName;
+  document.querySelector('.js-edit-name-input').value = matchingTodo.name;;
+  document.querySelector('.js-edit-date-input').value = matchingTodo.dueDate; 
+}
 
-  document.querySelector('.js-edit-date-input') 
-    .value = todoDate; 
-}  
-
+// Set up click handlers for closing/canceling the modal
 function closeEditModal() {
   document.querySelectorAll('.js-close-modal, .js-cancel-edit-button')
     .forEach((element) => {
@@ -33,5 +63,3 @@ function closeEditModal() {
       });
     });
 }
-
-
