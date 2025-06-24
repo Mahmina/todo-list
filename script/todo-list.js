@@ -1,6 +1,6 @@
 import { todoList } from "./data/todos.js";
 import { capitalizeFirstLetter } from "./utils/stringUtils.js";
-// import { bindEditButtons } from './components/editModal.js';
+import { attachEditButtonListeners } from './components/editModal.js';
 import { formatDate } from './utils/formatDate.js';
 import { generateId } from "./data/todos.js";
 
@@ -76,7 +76,7 @@ export function renderTodoList() {
     .innerHTML = todoListHTML;
 
   removeTodo();  
-  // bindEditButtons();
+  attachEditButtonListeners();
 }
 
 export function saveToStorage() {

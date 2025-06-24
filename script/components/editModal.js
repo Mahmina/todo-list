@@ -25,7 +25,7 @@ document.querySelector('.js-update-button')
     attachEditButtonListeners();
   });
 
-function attachEditButtonListeners() {
+export function attachEditButtonListeners() {
   document.querySelectorAll('.js-edit-button')
     .forEach((editButton) => {
       editButton.addEventListener('click', () => {
