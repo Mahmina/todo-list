@@ -4,6 +4,7 @@ import { attachEditButtonListeners } from './components/editModal.js';
 import { formatDate } from './utils/formatDate.js';
 import { generateId } from "./data/todos.js";
 
+
 renderTodoList();
 
 document.querySelector('.js-add-button')
@@ -38,15 +39,21 @@ export function renderTodoList() {
   let todoListHTML = '';
 
   todoList.forEach((todoObject) => {
-    const { id, name, dueDate } = todoObject;
+    const { id, name, dueDate, completed } = todoObject;
 
     const formattedDate = formatDate(dueDate);
  
     const html = `
       <li class="todo-list-item">
         <div class="todo-info">
-          <input type="checkbox" class="todo-checkbox">
-          <p class="todo-name">${name}</p>
+          <input 
+          type="checkbox" 
+          class="todo-checkbox js-todo-checkbox" 
+          data-todo-id=${id}
+          ${completed ? 'checked' : ''}>
+          <p class="todo-name js-todo-name ${todoObject.completed ? 'todo-completed' : ''}">
+        ${name}
+      </p>
         </div>
         <div class="todo-controls">
           <div class="todo-buttons">
@@ -77,6 +84,7 @@ export function renderTodoList() {
 
   removeTodo();  
   attachEditButtonListeners();
+  markTodoAsDone();
 }
 
 export function saveToStorage() {
@@ -93,3 +101,29 @@ function removeTodo() {
       });
     });    
 }
+
+function markTodoAsDone() {
+  document.querySelectorAll('.js-todo-checkbox')
+    .forEach((checkbox) => {
+      checkbox.addEventListener('click', () => {
+        const todoId = checkbox.dataset.todoId;
+
+        const todoNameElement = checkbox.parentElement.querySelector('.js-todo-name');
+
+        const matchingTodo = todoList.find(todoItem => todoItem.id === todoId);
+        if (matchingTodo) {
+          matchingTodo.completed = !matchingTodo.completed; 
+
+          if (todoNameElement) {
+            todoNameElement.classList.toggle('todo-completed', matchingTodo.completed);
+          }
+        }
+        saveToStorage();
+      });
+    });
+}
+
+
+ 
+
+

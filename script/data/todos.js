@@ -6,4 +6,3 @@ export function generateId() {
 export const todoList = JSON.parse(localStorage.getItem('todoList')) 
   || [];
 
-// console.log(todoList);  

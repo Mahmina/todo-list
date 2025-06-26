@@ -148,8 +148,29 @@ main {
 }
 
 .todo-checkbox {
-  width: 15px;
-  height: 15px;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--green2);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.todo-checkbox:checked {
+  background-color: var(--green2);
+}
+
+.todo-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .todo-name {
@@ -207,6 +228,11 @@ button svg {
 .motivation-text {
   color: var(--navy);
   font-size: 1.3rem;
+}
+
+.todo-completed {
+  text-decoration: line-through;
+  color: var(--green2);
 }
 
 #progress-bar {
@@ -312,3 +338,7 @@ button svg {
   }
 }
 
+.todo-completed {
+  text-decoration: line-through;
+  color: var(--green2);
+}
