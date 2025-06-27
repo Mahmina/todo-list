@@ -83,6 +83,9 @@ a {
 
 .nav-link {
   text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 1rem;
+  transition: border-color 0.3s;
 }
 
 .nav-link:hover {
@@ -90,7 +93,8 @@ a {
 }
 
 .nav-link.active {
-  padding: 0.5rem 1.5rem;
+  /* text-align: center; */
+  padding: 0.5rem 1rem;
   border-bottom: 2px solid var(--linkColor);
   font-weight: bold;
   color: var(--linkColor);

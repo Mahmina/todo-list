@@ -1,6 +1,6 @@
 import { todoList } from "../data/todos.js";
 import { saveToStorage } from "../todo-list.js";
-import { renderTodoList } from "../todo-list.js";
+import { showAllView } from "../views/allView.js";
 
 attachEditButtonListeners();
 closeEditModal();
@@ -19,7 +19,7 @@ document.querySelector('.js-update-button')
     matchingTodo.dueDate = document.querySelector('.js-edit-date-input').value;
 
     saveToStorage();
-    renderTodoList();
+    showAllView();
     modal.style.display = "none";
 
     attachEditButtonListeners();
