@@ -4,6 +4,10 @@ main {
   flex-direction: column;
 }
 
+a {
+  all: unset;
+}
+
 #main-container {
   display: flex;
   flex-direction: column;
