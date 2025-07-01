@@ -1,5 +1,6 @@
 import { showAllView } from "./views/allView.js";
 import { showActiveView } from "./views/activeView.js";
+import { showCompletedView } from "./views/completedView.js";
 
 document.querySelectorAll('.nav-link')
 .forEach((link) => {
@@ -16,6 +17,10 @@ document.querySelectorAll('.nav-link')
 
     if (viewName === "active") {
       showActiveView();
+    }
+
+    if (viewName === "completed") {
+      showCompletedView();
     }
   });
 });

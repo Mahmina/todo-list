@@ -1,0 +1,17 @@
+.js-active-todo-container {
+  padding: 1rem;
+  background-color: var(--purple);
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-active-empty-container {
+  background-color: var(--purple);
+  height: 5.05rem;
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-active-empty-container::before {
+  content: "No Active Task!";
+  color: var(--navy);
+  padding: 1rem;
+}

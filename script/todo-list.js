@@ -6,6 +6,7 @@ import { generateId } from "./data/todos.js";
 import  './navHandler.js';
 import './views/allView.js'
 import './views/activeView.js';
+import './views/completedView.js';
 import { showAllView } from './views/allView.js'; 
 
 
@@ -69,12 +70,17 @@ export function saveToStorage() {
 
 export function removeTodo() {
   document.querySelectorAll('.js-delete-button')
-    .forEach((deleteButton, index) => {
+    .forEach((deleteButton) => {
       deleteButton.addEventListener('click', () => {
-        todoList.splice(index, 1);
-        showAllView();
-        setNavIndicator('all');
-        saveToStorage();
+        const todoId = deleteButton.dataset.todoId;
+        const index = todoList.findIndex(todo => todo.id === todoId);
+
+        if (index !== -1) {
+          todoList.splice(index, 1);
+          showAllView();
+          setNavIndicator('all');
+          saveToStorage();
+        }
       });
     });    
 }

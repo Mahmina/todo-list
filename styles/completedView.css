@@ -1,0 +1,17 @@
+.js-completed-todo-container {
+  padding: 1rem;
+  background-color: var(--green2);
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-completed-empty-container {
+  background-color: var(--green2);
+  height: 5.05rem;
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-completed-empty-container::before {
+  content: "No Completed Task!";
+  color: var(--navy);
+  padding: 1rem;
+}
