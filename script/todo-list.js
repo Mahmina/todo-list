@@ -35,6 +35,7 @@ function addTodo() {
   dateInputElement.value = '';
 
   showAllView();
+  setNavIndicator('all');
   saveToStorage();
 }  
 

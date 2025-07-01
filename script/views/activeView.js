@@ -58,12 +58,21 @@ export function showActiveView() {
   });
 
   const htmlContent = `
-    <ul class="todo-list js-todo-list js-active-todo-container">
+    <ul class="todo-list js-todo-list">
       ${activeListHTML}
     </ul>
   `;
 
   renderTodoContainer(htmlContent);
+
+  const todoContainer = document.querySelector('.js-todo-list');
+  if (activeTodosList.length > 0) {
+    todoContainer.classList.add('js-active-todo-container');
+  } else {
+    todoContainer.classList.remove('js-active-todo-container');
+    todoContainer.classList.add('js-active-empty-container');
+  }
+
   removeTodo();  
   attachEditButtonListeners();
   markTodoAsDone();

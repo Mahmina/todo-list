@@ -354,4 +354,17 @@ button svg {
 .js-active-todo-container {
   padding: 1rem;
   background-color: var(--green2);
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-active-empty-container {
+  background-color: var(--green2);
+  height: 4rem;
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-active-empty-container::before {
+  content: "No Active Task!";
+  color: var(--navy);
+  padding: 1rem;
 }
