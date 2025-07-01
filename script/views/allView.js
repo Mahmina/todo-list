@@ -5,8 +5,6 @@ import { removeTodo, markTodoAsDone } from "../todo-list.js";
 import { attachEditButtonListeners } from "../components/editModal.js";
 
 
-console.log(todoList);
-
 export function showAllView() {
   let todoListHTML = '';
 
@@ -65,7 +63,7 @@ export function showAllView() {
     </div>
   `;
 
-  const container = document.querySelector('.js-todo-container');
+  // const container = document.querySelector('.js-todo-container');
   const htmlContent = `
     <ul class="todo-list js-todo-list">
       ${todoListHTML}

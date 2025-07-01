@@ -1,6 +1,7 @@
 import { todoList } from "../data/todos.js";
 import { saveToStorage } from "../todo-list.js";
 import { showAllView } from "../views/allView.js";
+import { setNavIndicator } from "../todo-list.js";
 
 attachEditButtonListeners();
 closeEditModal();
@@ -21,6 +22,7 @@ document.querySelector('.js-update-button')
     saveToStorage();
     showAllView();
     modal.style.display = "none";
+    setNavIndicator('all');
 
     attachEditButtonListeners();
   });

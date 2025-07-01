@@ -5,6 +5,7 @@ import { formatDate } from './utils/formatDate.js';
 import { generateId } from "./data/todos.js";
 import  './navHandler.js';
 import './views/allView.js'
+import './views/activeView.js';
 import { showAllView } from './views/allView.js'; 
 
 
@@ -13,6 +14,7 @@ document.querySelector('.js-add-button')
     addTodo();
   });
 
+  
 function addTodo() {
   const inputElement = document.querySelector('.js-todo-name-input');
   const name = capitalizeFirstLetter(inputElement.value);
@@ -49,6 +51,17 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+export function setNavIndicator(viewName) {
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    if (link.dataset.view === viewName) {
+      link.classList.add('active'); 
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
 export function saveToStorage() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
@@ -59,6 +72,7 @@ export function removeTodo() {
       deleteButton.addEventListener('click', () => {
         todoList.splice(index, 1);
         showAllView();
+        setNavIndicator('all');
         saveToStorage();
       });
     });    
@@ -80,6 +94,7 @@ export function markTodoAsDone() {
             todoNameElement.classList.toggle('todo-completed', matchingTodo.completed);
           }
         }
+        
         saveToStorage();
       });
     });

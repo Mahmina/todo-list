@@ -1,4 +1,5 @@
 import { showAllView } from "./views/allView.js";
+import { showActiveView } from "./views/activeView.js";
 
 document.querySelectorAll('.nav-link')
 .forEach((link) => {
@@ -12,6 +13,10 @@ document.querySelectorAll('.nav-link')
     if (viewName === "all") {
       showAllView();
     }  
+
+    if (viewName === "active") {
+      showActiveView();
+    }
   });
 });
 

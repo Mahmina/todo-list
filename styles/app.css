@@ -13,7 +13,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3.7rem 5rem;
+  padding: 3.7rem 7rem;
 }
 
 .task-input-box {
@@ -349,4 +349,9 @@ button svg {
 .todo-completed {
   text-decoration: line-through;
   color: var(--green2);
+}
+
+.js-active-todo-container {
+  padding: 1rem;
+  background-color: var(--green2);
 }
