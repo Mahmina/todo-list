@@ -1,10 +1,9 @@
 import { removedTodosList, saveRemovedToStorage, removeFromRemovedTodos } from "../data/removed-todos.js";
 import { formatDate } from "../utils/formatDate.js";
-import { renderTodoContainer, saveToStorage } from "../todo-list.js";
+import { renderTodoContainer, saveToStorage, setNavIndicator } from "../todo-list.js";
 import { attachEditButtonListeners } from "../components/editModal.js";
 import { todoList } from "../data/todos.js";
 import { showAllView } from "./allView.js";
-import { setNavIndicator } from "../todo-list.js";
 
 
 export function showRemovedView() {

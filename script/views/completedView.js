@@ -1,7 +1,6 @@
 import { formatDate } from "../utils/formatDate.js";
-import { renderTodoContainer } from "../todo-list.js";
+import { renderTodoContainer, removeTodo, markTodoAsDone } from "../todo-list.js";
 import { todoList } from "../data/todos.js";
-import { removeTodo, markTodoAsDone } from "../todo-list.js";
 import { attachEditButtonListeners } from "../components/editModal.js";
 
 export function showCompletedView() {

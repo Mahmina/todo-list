@@ -1,7 +1,6 @@
 import { todoList } from "../data/todos.js";
-import { saveToStorage } from "../todo-list.js";
+import { saveToStorage, setNavIndicator } from "../todo-list.js";
 import { showAllView } from "../views/allView.js";
-import { setNavIndicator } from "../todo-list.js";
 
 attachEditButtonListeners();
 closeEditModal();

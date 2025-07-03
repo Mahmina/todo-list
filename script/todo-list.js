@@ -1,8 +1,5 @@
-import { todoList } from "./data/todos.js";
+import { todoList, generateId } from "./data/todos.js";
 import { capitalizeFirstLetter } from "./utils/stringUtils.js";
-import { attachEditButtonListeners } from './components/editModal.js';
-import { formatDate } from './utils/formatDate.js';
-import { generateId } from "./data/todos.js";
 import  './navHandler.js';
 import './views/allView.js'
 import './views/activeView.js';

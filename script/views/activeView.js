@@ -1,5 +1,4 @@
-import { renderTodoContainer } from "../todo-list.js";
-import { removeTodo, markTodoAsDone } from "../todo-list.js";
+import { renderTodoContainer, removeTodo, markTodoAsDone } from "../todo-list.js";
 import { attachEditButtonListeners } from "../components/editModal.js";
 import { todoList } from "../data/todos.js";
 import { formatDate } from "../utils/formatDate.js";
