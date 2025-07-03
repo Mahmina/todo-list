@@ -67,10 +67,6 @@ export function saveToStorage() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 
-function saveRemovedTasks() {
-  localStorage.setItem('removedTasks', JSON.stringify(removedTasks));
-}
-
 export function removeTodo() {
   document.querySelectorAll('.js-delete-button')
     .forEach((deleteButton) => {
