@@ -73,6 +73,6 @@ export function showAllView() {
 
   renderTodoContainer(htmlContent);
   removeTodo();  
-  attachEditButtonListeners();
+  attachEditButtonListeners(todoList);
   markTodoAsDone();
 }

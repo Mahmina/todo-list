@@ -7,7 +7,9 @@ import  './navHandler.js';
 import './views/allView.js'
 import './views/activeView.js';
 import './views/completedView.js';
+import './views/removedView.js';
 import { showAllView } from './views/allView.js'; 
+import { addToRemovedTodos } from "./data/removed-todos.js";
 
 
 document.querySelector('.js-add-button')
@@ -68,11 +70,19 @@ export function saveToStorage() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 
+function saveRemovedTasks() {
+  localStorage.setItem('removedTasks', JSON.stringify(removedTasks));
+}
+
 export function removeTodo() {
   document.querySelectorAll('.js-delete-button')
     .forEach((deleteButton) => {
       deleteButton.addEventListener('click', () => {
         const todoId = deleteButton.dataset.todoId;
+        const deletedTodo = todoList.find(todo => todo.id === todoId);
+        
+        addToRemovedTodos(deletedTodo);
+
         const index = todoList.findIndex(todo => todo.id === todoId);
 
         if (index !== -1) {

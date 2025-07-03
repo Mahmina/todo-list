@@ -1,0 +1,17 @@
+.js-removed-todo-container {
+  padding: 1rem;
+  background-color: var(--red);
+  box-shadow: inset 1px 1px 8px gray;
+}
+
+.js-removed-empty-container {
+  background-color: var(--red);
+  height: 5.05rem;
+  box-shadow: inset 1px 1px 15px gray;
+}
+
+.js-removed-empty-container::before {
+  content: "No Removed Task!";
+  color: var(--navy);
+  padding: 1rem;
+}

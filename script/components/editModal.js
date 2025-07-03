@@ -27,20 +27,21 @@ document.querySelector('.js-update-button')
     attachEditButtonListeners();
   });
 
-export function attachEditButtonListeners() {
+export function attachEditButtonListeners(list) {
   document.querySelectorAll('.js-edit-button')
     .forEach((editButton) => {
       editButton.addEventListener('click', () => {
         modal.style.display = "block";
         const todoId = editButton.dataset.todoId;
-        
+
         let matchingTodo;
 
-        todoList.forEach((todoItem) => {
+        list.forEach((todoItem) => {
           if (todoItem.id === todoId) {
             matchingTodo = todoItem;
           }
         });
+        console.log(matchingTodo);
         populateEditModal(matchingTodo);
 
         modal.dataset.editingId = todoId;
@@ -49,7 +50,7 @@ export function attachEditButtonListeners() {
 }
 
 // Populate the modal inputs with the todo's info
-function populateEditModal(matchingTodo) {
+export function populateEditModal(matchingTodo) {
   if (!matchingTodo) return;
 
   document.querySelector('.js-edit-name-input').value = matchingTodo.name;;

@@ -65,7 +65,7 @@ export function showActiveView() {
 
   renderTodoContainer(htmlContent);
   removeTodo();  
-  attachEditButtonListeners();
+  attachEditButtonListeners(todoList);
   markTodoAsDone();
 
   const todoContainer = document.querySelector('.js-todo-list');
