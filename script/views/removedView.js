@@ -90,6 +90,32 @@ export function showRemovedView() {
     setNavIndicator('all');
   };
 
+  document.querySelectorAll('.js-todo-checkbox')
+    .forEach((checkbox) => {
+      checkbox.addEventListener('click', () => {
+        const todoId = checkbox.dataset.todoId;
+
+        const todoNameElement = checkbox.parentElement.querySelector('.js-todo-name');
+
+        const matchingTodo = removedTodosList.find(todoItem => todoItem.id === todoId);
+        if (matchingTodo) {
+          matchingTodo.completed = !matchingTodo.completed; 
+
+          if (todoNameElement) {
+            todoNameElement.classList.toggle('todo-completed', matchingTodo.completed);
+          }
+        }
+        saveRemovedToStorage();
+
+        if (matchingTodo.completed) {
+          removeFromRemovedTodos(todoId);
+          todoList.push(matchingTodo);
+          saveToStorage();
+          showRemovedView();
+        }
+      });
+    });
+
   const todoContainer = document.querySelector('.js-todo-list');
   if (removedTodosList.length > 0) {
     todoContainer.classList.add('js-removed-todo-container');
@@ -98,5 +124,6 @@ export function showRemovedView() {
     todoContainer.classList.add('js-removed-empty-container');
   }
 }
+console.log(removedTodosList);
 
 
