@@ -64,7 +64,7 @@ export function showCompletedView() {
   renderTodoContainer(htmlContent);
   removeTodo();  
   attachEditButtonListeners(todoList);
-  markTodoAsDone();
+  markTodoAsDone(showCompletedView);
 
   const todoContainer = document.querySelector('.js-todo-list');
   if (completedTodosList.length > 0) {

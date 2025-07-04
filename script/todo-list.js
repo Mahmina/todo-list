@@ -7,6 +7,7 @@ import './views/completedView.js';
 import './views/removedView.js';
 import { showAllView } from './views/allView.js'; 
 import { addToRemovedTodos } from "./data/removed-todos.js";
+import { showActiveView } from "./views/activeView.js";
 
 
 document.querySelector('.js-add-button')
@@ -88,7 +89,7 @@ export function removeTodo() {
     });    
 }
 
-export function markTodoAsDone() {
+export function markTodoAsDone(refreshView) {
   document.querySelectorAll('.js-todo-checkbox')
     .forEach((checkbox) => {
       checkbox.addEventListener('click', () => {
@@ -104,8 +105,11 @@ export function markTodoAsDone() {
             todoNameElement.classList.toggle('todo-completed', matchingTodo.completed);
           }
         }
-        
         saveToStorage();
+
+        if (typeof refreshView === 'function') {
+          refreshView();
+        }
       });
     });
 }
