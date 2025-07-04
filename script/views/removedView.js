@@ -124,6 +124,3 @@ export function showRemovedView() {
     todoContainer.classList.add('js-removed-empty-container');
   }
 }
-console.log(removedTodosList);
-
-

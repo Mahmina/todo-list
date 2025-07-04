@@ -73,4 +73,5 @@ export function showCompletedView() {
     todoContainer.classList.remove('js-completed-todo-container');
     todoContainer.classList.add('js-completed-empty-container');
   }
+  return completedTodosList;
 }

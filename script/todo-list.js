@@ -7,7 +7,6 @@ import './views/completedView.js';
 import './views/removedView.js';
 import { showAllView } from './views/allView.js'; 
 import { addToRemovedTodos } from "./data/removed-todos.js";
-import { showActiveView } from "./views/activeView.js";
 
 
 document.querySelector('.js-add-button')
@@ -101,6 +100,7 @@ export function markTodoAsDone(refreshView) {
         if (matchingTodo) {
           matchingTodo.completed = !matchingTodo.completed; 
 
+
           if (todoNameElement) {
             todoNameElement.classList.toggle('todo-completed', matchingTodo.completed);
           }
@@ -110,8 +110,22 @@ export function markTodoAsDone(refreshView) {
         if (typeof refreshView === 'function') {
           refreshView();
         }
+        updateStats();
       });
     });
+}
+
+export function updateStats() {
+  const completedTasks = todoList.filter(todo => todo.completed).length;
+  const totalTasks = todoList.length;
+  const progress = (completedTasks / totalTasks) * 100;
+  const progressBar = document.getElementById('progress');
+
+  if (progressBar) {
+    progressBar.style.width = `${progress}%`;
+  }
+
+  document.getElementById('numbers').innerText = `${completedTasks} / ${totalTasks}`;
 }
 
 

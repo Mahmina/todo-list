@@ -2,9 +2,11 @@ import { todoList } from "../data/todos.js";
 import { renderTodoContainer, removeTodo, markTodoAsDone } from "../todo-list.js";
 import { formatDate } from "../utils/formatDate.js";
 import { attachEditButtonListeners } from "../components/editModal.js";
+import { updateStats } from "../todo-list.js";
 
 
 export function showAllView() {
+  // const completedTodosList = showCompletedView();
   let todoListHTML = '';
 
   todoList.forEach((todoObject) => {
@@ -57,12 +59,11 @@ export function showAllView() {
         </div>              
       </div>
       <div class="stats-numbers">
-        <p class="numbers">1 / 2</p>
+        <p id="numbers">0 / 0</p>
       </div>
     </div>
   `;
 
-  // const container = document.querySelector('.js-todo-container');
   const htmlContent = `
     <ul class="todo-list js-todo-list">
       ${todoListHTML}
@@ -73,5 +74,6 @@ export function showAllView() {
   renderTodoContainer(htmlContent);
   removeTodo();  
   attachEditButtonListeners(todoList);
-  markTodoAsDone();
+  markTodoAsDone(showAllView);
+  updateStats();
 }
