@@ -253,8 +253,8 @@ button svg {
 #progress {
   background-color: var(--green2);
   height: 1rem;
-  width: 50%;
   border-radius: 10px;
+  transition: all 4s ease;
 }
 
 .stats-numbers {
