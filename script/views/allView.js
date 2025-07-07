@@ -53,7 +53,7 @@ export function showAllView() {
   const statsHTML = `
     <div class="stats-container">
       <div class="details">
-        <h2 class="motivation-text">Don’t overthink, just begin!</h2>
+        <h2 class="motivation-text js-motivation-text">Don’t overthink, just begin!</h2>
         <div id="progress-bar">
           <div id="progress"></div>
         </div>              

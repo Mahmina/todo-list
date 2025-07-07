@@ -7,6 +7,7 @@ import './views/completedView.js';
 import './views/removedView.js';
 import { showAllView } from './views/allView.js'; 
 import { addToRemovedTodos } from "./data/removed-todos.js";
+import { numberToWords } from "./utils/stringUtils.js";
 
 
 document.querySelector('.js-add-button')
@@ -129,8 +130,29 @@ export function updateStats() {
 
   if (totalTasks === completedTasks) {
     blaskConfetti();
+  } 
+
+
+  const motivationalText = document.querySelector('.js-motivation-text');
+
+  if (completedTasks === 0) {
+    motivationalText.innerHTML = 'Don’t overthink, just begin!';
+  } else if (completedTasks === 1) {
+    motivationalText.innerHTML = `One down, ${numberToWords(totalTasks - completedTasks)} to go!`;
+  } else if (completedTasks === Math.floor(totalTasks / 2)) {
+    motivationalText.innerHTML = "Halfway there. You're on fire!";
+  } else if (completedTasks < totalTasks / 2) {
+    motivationalText.innerHTML = "Look at you go! Keep checking them off.";
+  } else if (completedTasks > totalTasks / 2) {
+    motivationalText.innerHTML = "The finish line is in sight. Go for it!";
+  } else if (completedTasks === totalTasks - 1) {
+    motivationalText.innerHTML = 'Only one task left. Crush it!';
+  } else if (completedTasks === totalTasks) {
+    motivationalText.innerHTML = 'You did it! Time to relax and celebrate. 🎉';
+  } else {
+    motivationalText.innerHTML = 'Stay in the zone!';
   }
-}
+}  
 
 function blaskConfetti() {
   const count = 200,
@@ -173,8 +195,3 @@ function blaskConfetti() {
     startVelocity: 45,
   });
 }
-
-
- 
-
-
