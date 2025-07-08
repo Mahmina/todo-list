@@ -33,7 +33,37 @@ a {
   border-color: transparent;
   outline: none;
   font-size: 1rem;
-  width: 0;
+  width: 100%;
+}
+
+.todo-name-container {
+  flex: 1;
+}
+
+.todo-name-container,
+.todo-date-container {
+  position: relative;
+  white-space: nowrap;
+}
+
+.todo-name-popup,
+.todo-date-popup {
+  position: absolute;
+  background-color: rgb(164, 164, 164);
+  color: var(--white);
+  padding: 0.3rem;
+  border-radius: 3px;
+  display: none;
+}
+
+.todo-name-popup {
+  top: 3.7rem;
+  left: -1rem;
+}
+
+.todo-date-popup {
+  top: 3rem;
+  left: 1.7rem;
 }
 
 .hidden-date-input {
@@ -280,6 +310,8 @@ button svg {
   text-decoration: line-through;
   color: var(--green2);
 }
+
+
 
 @media (max-width: 1450px) {
   .task-input-box,

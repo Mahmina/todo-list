@@ -22,6 +22,25 @@ function addTodo() {
 
   const dateInputElement = document.getElementById('todo-date-input');
   const dueDate = dateInputElement.value;
+
+  const namePopup = document.querySelector('.js-todo-name-popup');
+  const datePopup = document.querySelector('.js-todo-date-popup');
+
+  if (!name) {
+    namePopup.style.display = 'block';
+    setTimeout(() => {
+      namePopup.style.display = 'none';
+    }, 2000);
+    return;
+  }
+
+  if (!dueDate) {
+    datePopup.style.display = 'block';
+    setTimeout(() => {
+      datePopup.style.display = 'none';
+    }, 2000);
+    return;
+  }
   
   const newTodo = {
     id: generateId(),

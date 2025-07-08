@@ -22,10 +22,16 @@
     <main>
       <section id="main-container">
         <div class="task-input-box">
-          <input class="todo-name-input js-todo-name-input" type="text" placeholder="Add new todo...">
-        
-          <input type="date" id="todo-date-input" class="hidden-date-input">
-
+          <div class="todo-name-container">
+            <input class="todo-name-input js-todo-name-input" type="text" placeholder="Add new todo...">
+            <div class="todo-name-popup js-todo-name-popup">Enter Todo Name</div>
+          </div>
+          
+          <div class="todo-date-container">
+            <input type="date" id="todo-date-input" class="hidden-date-input">
+            <div class="todo-date-popup js-todo-date-popup">Enter Todo Date</div>
+          </div>
+          
           <svg class="calendar-icon" 
           onclick="document.getElementById('todo-date-input').showPicker()"
           xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-week-fill" viewBox="0 0 16 16">
