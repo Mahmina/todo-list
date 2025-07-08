@@ -4,6 +4,7 @@ import { renderTodoContainer, saveToStorage, setNavIndicator } from "../todo-lis
 import { attachEditButtonListeners } from "../components/editModal.js";
 import { todoList } from "../data/todos.js";
 import { showAllView } from "./allView.js";
+import { capitalizeFirstLetter } from "../utils/stringUtils.js";
 
 
 export function showRemovedView() {
@@ -76,7 +77,7 @@ export function showRemovedView() {
     const matchingTodo = removedTodosList.find(todo => todo.id === todoId);
     if (!matchingTodo) return;
 
-    matchingTodo.name = document.querySelector('.js-edit-name-input').value;
+    matchingTodo.name = capitalizeFirstLetter(document.querySelector('.js-edit-name-input').value);
     matchingTodo.dueDate = document.querySelector('.js-edit-date-input').value;
 
     // Move back to main todo list

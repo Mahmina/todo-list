@@ -1,6 +1,7 @@
 import { todoList } from "../data/todos.js";
 import { saveToStorage, setNavIndicator } from "../todo-list.js";
 import { showAllView } from "../views/allView.js";
+import { capitalizeFirstLetter } from "../utils/stringUtils.js";
 
 attachEditButtonListeners();
 closeEditModal();
@@ -15,7 +16,7 @@ document.querySelector('.js-update-button')
     const matchingTodo = todoList.find(todo => todo.id === todoId);
     if (!matchingTodo) return;
 
-    matchingTodo.name = document.querySelector('.js-edit-name-input').value;
+    matchingTodo.name = capitalizeFirstLetter(document.querySelector('.js-edit-name-input').value);
     matchingTodo.dueDate = document.querySelector('.js-edit-date-input').value;
 
     saveToStorage();
