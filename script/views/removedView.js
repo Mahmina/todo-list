@@ -65,6 +65,12 @@ export function showRemovedView() {
   document.querySelectorAll('.js-delete-button').forEach((btn) => {
     btn.addEventListener('click', () => {
       const todoId = btn.dataset.todoId;
+
+      const confirmDelete = window.confirm('Are you sure you want to permanently delete this task?');
+
+      if (!confirmDelete) {
+        return; // User canceled deletion
+      }
       removeFromRemovedTodos(todoId);
       showRemovedView();
     });
@@ -109,6 +115,23 @@ export function showRemovedView() {
         saveRemovedToStorage();
 
         if (matchingTodo.completed) {
+          const confirmCheck = window.confirm('Do you want to bring this task back to life?');
+
+          if (!confirmCheck) {
+            matchingTodo.completed = false;
+
+            // Undo the checkbox tick
+            if (checkbox) {
+              checkbox.checked = false;
+            }
+
+            if (todoNameElement) {
+              todoNameElement.classList.toggle('todo-completed', false);
+            }
+            
+            return; 
+          }
+          matchingTodo.completed = false;
           removeFromRemovedTodos(todoId);
           todoList.push(matchingTodo);
           saveToStorage();

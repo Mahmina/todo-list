@@ -11,12 +11,6 @@ export function saveRemovedToStorage() {
 
 export function removeFromRemovedTodos(todoId) {
   const index = removedTodosList.findIndex(todo => todo.id === todoId);
-
-  const confirmDelete = window.confirm('Are you sure you want to permanently delete this task?');
-
-  if (!confirmDelete) {
-    return; // User canceled deletion
-  }
   
   if (index !== -1) {
     removedTodosList.splice(index, 1);
