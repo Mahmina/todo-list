@@ -163,12 +163,12 @@ export function updateStats() {
     motivationalText.innerHTML = "Halfway there. You're on fire!";
   } else if (completedTasks === totalTasks - 1) {
     motivationalText.innerHTML = 'Only one task left. Crush it!';
+  } else if (completedTasks === totalTasks) {
+    motivationalText.innerHTML = 'You did it! Time to relax and celebrate. 🎉';
   } else if (completedTasks < totalTasks / 2) {
     motivationalText.innerHTML = "Look at you go! Keep checking them off.";
   } else if (completedTasks > totalTasks / 2) {
     motivationalText.innerHTML = "The finish line is in sight. Go for it!";
-  } else if (completedTasks === totalTasks) {
-    motivationalText.innerHTML = 'You did it! Time to relax and celebrate. 🎉';
   } else {
     motivationalText.innerHTML = 'Stay in the zone!';
   }
