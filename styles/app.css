@@ -320,6 +320,15 @@ button svg {
   .todo-container {
     width: 90%;
   }
+
+  .nav-link {
+    padding: 0.5rem 0.6rem;
+    transition: border-color 0.3s;
+  }
+
+  .nav-tabs {
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -367,10 +376,6 @@ button svg {
 }
 
 @media (max-width: 600px) {
-  .nav-tabs {
-    gap: 1rem;
-  }
-
   #main-container {
     padding: 3.7rem 3rem;
   }

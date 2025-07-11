@@ -59,6 +59,11 @@ function addTodo() {
   saveToStorage();
 }  
 
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    addTodo();
+  }
+})
 
 export function renderTodoContainer(htmlContent) {
   const todoContainer = document.querySelector('.js-todo-container');
